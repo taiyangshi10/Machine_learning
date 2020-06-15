@@ -1,0 +1,18 @@
+import mplfinance as mpf
+daily = pd.read_csv('SH600002.csv',index_col=1,parse_dates=True)
+daily.index.name = 'Date'
+daily.shape
+daily.head(3)
+daily.tail(3)
+daily.columns = ['Number','Open', 'High', 'Low', 'Close', 'Volume','Volume1']
+daily
+mpl.plot(daily)
+
+daily2 = daily[['Open', 'High', 'Low', 'Close','Volume']]
+daily2.colums = ['Open', 'High', 'Low', 'Close','Volume']
+daily2.index.name = 'Date'
+daily2
+mpl.plot(daily2)
+mpf.plot(daily2,type='candle',mav=(7,12))
+mpf.plot(daily2,type='ohlc',mav=(3,12))
+mpf.plot(daily2,type='candle',mav=(3,6,9),volume=True)
